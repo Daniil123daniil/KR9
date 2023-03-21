@@ -59,7 +59,6 @@ public class Main {
             int ans = urLpFinder.findP(textURL);
             bufferedWriter.write(ans + "");
             bufferedWriter.flush();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

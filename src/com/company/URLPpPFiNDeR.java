@@ -22,7 +22,7 @@ public class URLPpPFiNDeR {
             String inputLine;
             int count = 0;
             while ((inputLine = bufferedReader.readLine()) != null){
-                if (inputLine.contains("<p ") || inputLine.contains("<p>")){
+                if (inputLine.contains("<p ") || inputLine.contains("<p>")) {
                     count++;
                 }
             }
