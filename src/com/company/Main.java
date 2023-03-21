@@ -1,72 +1,74 @@
 package com.company;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.DeflaterOutputStream;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        University MFTI = new University("МФТИ",300,30,100);
+        University MGU = new University("МГУ",350,35,120);
+        University DVGUPS = new University("ДВГУПС",310,20,110);
+        University SPBGU = new University("СПбГУ",500,33,115);
+        University VSHE = new University("ВШЭ",150,27,150);
+        University MGIMO = new University("МГИМО",100,29,112);
+        University RUT = new University("РУТ",130,21,101);
 
-        try (InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
-             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-             BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter)) {
+        Cities Moscow = new Cities("Москва",1000);
+        Cities SaintPetersburg = new Cities("Санк-Петербург", 900);
+        Cities Khabarovsk = new Cities("Хабаровск", 800);
+        Cities Dolgoprudniy = new Cities("Долгопрудный", 400);
 
-            bufferedWriter.write("Введите название 1-го файла - ");
-            bufferedWriter.flush();
-            String file1Name = bufferedReader.readLine();
+        HashSet<University> humanitiesUniversity = new HashSet<>();
+        HashSet<University> technicalUniversity = new HashSet<>();
+        HashSet<Cities> cities = new HashSet<>();
 
-            bufferedWriter.write("Введите название 2-го файла - ");
-            bufferedWriter.flush();
-            String file2Name = bufferedReader.readLine();
+        cities.add(Moscow);
+        cities.add(SaintPetersburg);
+        cities.add(Khabarovsk);
+        cities.add(Dolgoprudniy);
 
-            File file1 = new File(file1Name + ".txt");
-            File file2 = new File(file2Name + ".txt");
+        technicalUniversity.add(RUT);
+        technicalUniversity.add(MFTI);
+        technicalUniversity.add(MGU);
+        technicalUniversity.add(DVGUPS);
+        technicalUniversity.add(SPBGU);
 
-            List<String> str_list = new ArrayList<>();
+        humanitiesUniversity.add(VSHE);
+        humanitiesUniversity.add(MGIMO);
+        humanitiesUniversity.add(MGU);
+        humanitiesUniversity.add(SPBGU);
 
-            try (FileWriter fw1 = new FileWriter(file1, true)) {
-                bufferedWriter.write("Введите строку, которая запишется в файл - ");
-                bufferedWriter.flush();
-                String str = bufferedReader.readLine();
-                fw1.write(str);
-            }
+        HashSet<University> allUniversity = new HashSet<>();
+        allUniversity.addAll(technicalUniversity);
+        allUniversity.addAll(humanitiesUniversity);
+        System.out.println(allUniversity);
+        University.getInfo(allUniversity);
 
-            try (FileWriter fw2 = new FileWriter(file2, true);
-                 FileReader fr1 = new FileReader(file1)) {
+        HashSet<University> andUniversity = new HashSet<>(technicalUniversity);
+        andUniversity.retainAll(humanitiesUniversity);
+        System.out.println(andUniversity);
+        University.getInfo(andUniversity);
 
-                var bufferedReader1 = new BufferedReader(fr1);
-                String get_str;
+        HashSet<University> orUniversity = new HashSet<>(allUniversity);
+        orUniversity.removeAll(andUniversity);
+        System.out.println(orUniversity);
+        University.getInfo(orUniversity);
 
-                while ((get_str = bufferedReader1.readLine()) != null) {
-                    str_list.add(get_str);
-                }
+        HashMap<University,Cities> universityCity = new HashMap<>();
 
-                for (var string : str_list) {
-                    String[] splited_string = string.split("\\s+");
-                    for (String spl_str : splited_string) {
-                        try {
-                            int num = Integer.parseInt(spl_str);
-                            fw2.append(String.valueOf(num));
-                            fw2.append(" ");
-                        } catch (NumberFormatException e) {}
-                    }
-                }
-            }
+        universityCity.put(MGU,Moscow);
+        universityCity.put(VSHE,Moscow);
+        universityCity.put(RUT,Moscow);
+        universityCity.put(MGIMO,Moscow);
+        universityCity.put(MFTI,Dolgoprudniy);
+        universityCity.put(DVGUPS,Khabarovsk);
+        universityCity.put(SPBGU,SaintPetersburg);
 
-            URLPpPFiNDeR urLpFinder = new URLPpPFiNDeR();
-            String textURL = "http://xn--b1afk4ade4e.xn--b1ab2a0a.xn--b1aew.xn--p1ai/info-service.htm?sid=2000";
-            int ans = urLpFinder.findP(textURL);
-            bufferedWriter.write(ans + "");
-            bufferedWriter.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (Cities city: cities) {
+            Cities.cityInfo(universityCity,city);
         }
-
     }
 
 }
