@@ -33,7 +33,7 @@ public class Cities {
                 '}';
     }
 
-    public static void cityInfo (HashMap<University,Cities> a, Cities city){
+    public static void cityInfo(HashMap<University,Cities> a, Cities city){
         int stud = 0;
 
         for (Map.Entry<University,Cities> b : a.entrySet()) {

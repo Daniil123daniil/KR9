@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         University MFTI = new University("МФТИ",300,30,100);
         University MGU = new University("МГУ",350,35,120);
         University DVGUPS = new University("ДВГУПС",310,20,110);
