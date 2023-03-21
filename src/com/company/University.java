@@ -8,7 +8,7 @@ public class University {
     private int tutorsNumber;
     private float scoreUSE;
 
-    public University(String name, int studentsNumber, int tutorsNumber, float scoreUSE) {
+    public University (String name, int studentsNumber, int tutorsNumber, float scoreUSE) {
         this.name = name;
         this.studentsNumber = studentsNumber;
         this.tutorsNumber = tutorsNumber;
