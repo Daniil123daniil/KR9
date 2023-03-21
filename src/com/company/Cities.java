@@ -34,13 +34,13 @@ public class Cities {
     }
 
     public static void cityInfo(HashMap<University,Cities> a, Cities city){
-        int students = 0;
+        int stud = 0;
 
         for (Map.Entry<University,Cities> b : a.entrySet()) {
             if (b.getValue().equals(city)){
-                students += b.getKey().getStudentsNumber();
+                stud += b.getKey().getStudentsNumber();
             }
         }
-        System.out.println(city.name + ": " + " на " + city.population +" житилей приходится " + students + " студентов");
+        System.out.println(city.name + ": " + " на " + city.population + " житилей приходится " + stud + " студентов");
     }
 }

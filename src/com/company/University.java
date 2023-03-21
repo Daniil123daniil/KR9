@@ -3,17 +3,16 @@ import java.util.HashSet;
 import java.util.Objects;
 
 public class University {
-
     private String name;
     private int studentsNumber;
     private int tutorsNumber;
-    private float avgEGE;
+    private float scoreUSE;
 
-    public University(String name, int studentsNumber, int tutorsNumber, float avgEGE) {
+    public University(String name, int studentsNumber, int tutorsNumber, float scoreUSE) {
         this.name = name;
         this.studentsNumber = studentsNumber;
         this.tutorsNumber = tutorsNumber;
-        this.avgEGE = avgEGE;
+        this.scoreUSE = scoreUSE;
     }
 
     @Override
@@ -21,21 +20,21 @@ public class University {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         University that = (University) o;
-        return studentsNumber == that.studentsNumber && tutorsNumber == that.tutorsNumber && Float.compare(that.avgEGE, avgEGE) == 0 && Objects.equals(name, that.name);
+        return studentsNumber == that.studentsNumber && tutorsNumber == that.tutorsNumber && Float.compare(that.scoreUSE, scoreUSE) == 0 && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, studentsNumber, tutorsNumber, avgEGE);
+        return Objects.hash(name, studentsNumber, tutorsNumber, scoreUSE);
     }
 
     @Override
     public String toString() {
         return "Университет {" +
-                " название = '" + name + '\'' +
-                ", Номер студента = " + studentsNumber +
-                ", Номер учителя = " + tutorsNumber +
-                ", avgEGE = " + avgEGE +
+                " Название = '" + name + '\'' +
+                ", Количество студентов =" + studentsNumber +
+                ", Количество учителей=" + tutorsNumber +
+                ", балл ЕГЭ =" + scoreUSE +
                 '}';
     }
 
@@ -43,16 +42,15 @@ public class University {
         return studentsNumber;
     }
 
-    public static void getInfo(HashSet<University> b) {
+    public static void getInfo(HashSet<University> b){
         int stud = 0;
         float tutor = 0;
         float ege = 0;
         for (University a : b) {
             stud += a.studentsNumber;
             tutor += a.tutorsNumber;
-            ege += a.avgEGE;
+            ege += a.scoreUSE;
         }
-        System.out.println("Число студентов в множестве - " + stud + " \n Среднее количество преподавателей множества - " + tutor / b.size() + " \n Средний балл ЕГЭ во множестве - " + ege / b.size() + " \n");
+        System.out.println("Число студентов в множестве - " + stud + "\nСреднее количество преподавателей множества - " + tutor/b.size() + " \n Средний балл ЕГЭ во множестве - " + ege/b.size() + " \n");
     }
-
 }
