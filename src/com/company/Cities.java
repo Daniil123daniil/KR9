@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Cities {
-    private String name;
-    private int population;
+    private final String name;
+    private final int population;
 
     public Cities(String name, int population) {
         this.name = name;
@@ -33,7 +33,7 @@ public class Cities {
                 '}';
     }
 
-    public static void cityInfo (HashMap<University,Cities> a, Cities city){
+    public static void cityInfo(HashMap<University,Cities> a, Cities city){
         int stud = 0;
 
         for (Map.Entry<University,Cities> b : a.entrySet()) {

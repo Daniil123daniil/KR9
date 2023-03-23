@@ -3,12 +3,12 @@ import java.util.HashSet;
 import java.util.Objects;
 
 public class University {
-    private String name;
-    private int studentsNumber;
-    private int tutorsNumber;
-    private float scoreUSE;
+    private final String name;
+    private final int studentsNumber;
+    private final int tutorsNumber;
+    private final float scoreUSE;
 
-    public University (String name, int studentsNumber, int tutorsNumber, float scoreUSE) {
+    public University(String name, int studentsNumber, int tutorsNumber, float scoreUSE) {
         this.name = name;
         this.studentsNumber = studentsNumber;
         this.tutorsNumber = tutorsNumber;
